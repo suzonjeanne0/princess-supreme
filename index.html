@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pink Moon Kingdom | Suzon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:'Poppins',sans-serif;
+background:radial-gradient(circle at top,#ffd6ec,#ffb6d9,#ff8fc2);
+overflow-x:hidden;
+color:white;
+}
+
+/* ===== Floating Hearts ===== */
+.heart{
+position:fixed;
+font-size:20px;
+animation:float 8s linear infinite;
+opacity:.8;
+pointer-events:none;
+}
+@keyframes float{
+from{transform:translateY(110vh);}
+to{transform:translateY(-10vh);}
+}
+
+/* ===== Sections ===== */
+.section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:40px;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ===== Moon Entrance ===== */
+.moon{
+width:200px;
+height:200px;
+border-radius:50%;
+background:radial-gradient(circle,#fff,#ffcce6);
+box-shadow:0 0 80px #ff69b4;
+animation:glow 3s infinite alternate;
+margin-bottom:30px;
+}
+@keyframes glow{
+from{box-shadow:0 0 40px #ff69b4;}
+to{box-shadow:0 0 90px #fff;}
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:50px;
+margin-bottom:20px;
+text-shadow:0 0 20px rgba(255,255,255,.7);
+}
+
+p{
+max-width:700px;
+line-height:1.8;
+font-size:18px;
+}
+
+/* ===== Buttons ===== */
+button{
+padding:15px 40px;
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg,#ff2e88,#ff69b4);
+color:white;
+font-size:18px;
+cursor:pointer;
+margin-top:25px;
+box-shadow:0 15px 40px rgba(255,0,120,.5);
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+/* ===== Cinematic Gallery ===== */
+.gallery{
+position:relative;
+width:90%;
+max-width:500px;
+height:600px;
+overflow:hidden;
+border-radius:25px;
+box-shadow:0 20px 60px rgba(255,0,150,.5);
+}
+
+.gallery img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:1.5s;
+}
+
+.gallery img.active{
+opacity:1;
+transform:scale(1.05);
+}
+
+audio.controls{
+position:fixed;
+bottom:10px;
+left:10px;
+z-index:10;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Voice Message -->
+<audio class="controls" controls>
+<source src="voice.m4a" type="audio/mp4">
+</audio>
+
+<!-- SECTION 1 -->
+<div class="section show" id="s1">
+<div class="moon"></div>
+<h1 id="typing"></h1>
+<button onclick="next()">Enter My World, My Princess 👑</button>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section" id="s2">
+<h1>My Baby, Mon Amour 💗</h1>
+<p>
+You are my soft shy princess.  
+My funny chaotic cutie.  
+My pink moon in my sky.  
+When I look at you, I don’t just see beauty —
+I see my future, my forever.
+</p>
+<button onclick="next()">Our Memories 🌙</button>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section" id="s3">
+<h1>Our Pink Kingdom 📸</h1>
+<div class="gallery" id="gallery"></div>
+<button onclick="next()">One Last Question 💍</button>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section" id="s4">
+<h1>Will You Stay In My World Forever?</h1>
+<p>My princess. My heart. Mon amour.</p>
+<button onclick="celebrate()">Yes, My Love 💖</button>
+</div>
+
+<script>
+
+/* ===== iPhone Music Start ===== */
+document.body.addEventListener("click",()=>{
+document.getElementById("music").play();
+},{once:true});
+
+/* ===== Section Navigation ===== */
+let sections=["s1","s2","s3","s4"];
+let current=0;
+
+function next(){
+document.getElementById(sections[current]).classList.remove("show");
+current++;
+document.getElementById(sections[current]).classList.add("show");
+}
+
+/* ===== Typing Intro ===== */
+let text="Welcome to Your Pink Moon Kingdom, Suzon Jeanne Vergé...";
+let i=0;
+function type(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,60);
+}}
+type();
+
+/* ===== Floating Hearts ===== */
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💗";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(15+Math.random()*25)+"px";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),8000);
+},500);
+
+/* ===== Auto Photo Slideshow ===== */
+const gallery=document.getElementById("gallery");
+let images=[];
+for(let i=1;i<=50;i++){
+images.push("photos/"+i+".jpg");
+}
+
+let loaded=[];
+images.forEach(src=>{
+let img=new Image();
+img.src=src;
+img.onload=()=>{
+img.classList.add("slide");
+gallery.appendChild(img);
+loaded.push(img);
+if(loaded.length===1) img.classList.add("active");
+};
+});
+
+let index=0;
+setInterval(()=>{
+if(loaded.length<2) return;
+loaded[index].classList.remove("active");
+index=(index+1)%loaded.length;
+loaded[index].classList.add("active");
+},3000);
+
+/* ===== Final Celebration ===== */
+function celebrate(){
+alert("Forever begins now, my princess 👑💖");
+}
+
+</script>
+
+</body>
+</html>
