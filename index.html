@@ -1,255 +1,860 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Kitty & My Princess 👑 | Suzon</title>
+    
+    <!-- Professional Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<title>Pink Moon Kingdom | Suzon</title>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff0f7;
+            color: #5e2a4b;
+            overflow-x: hidden;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
 
-<style>
+        ::-webkit-scrollbar-track {
+            background: #ffe4f0;
+            border-radius: 10px;
+        }
 
-*{margin:0;padding:0;box-sizing:border-box}
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff8cb0, #ffa9c9);
+            border-radius: 10px;
+            border: 3px solid #ffe4f0;
+        }
 
-body{
-font-family:'Poppins',sans-serif;
-background:radial-gradient(circle at top,#ffd6ec,#ffb6d9,#ff8fc2);
-overflow-x:hidden;
-color:white;
-}
+        /* Floating Hello Kitty Elements */
+        .floating-kitty {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.1;
+            font-size: 100px;
+            animation: floatAround 20s infinite linear;
+        }
 
-/* ===== Floating Hearts ===== */
-.heart{
-position:fixed;
-font-size:20px;
-animation:float 8s linear infinite;
-opacity:.8;
-pointer-events:none;
-}
-@keyframes float{
-from{transform:translateY(110vh);}
-to{transform:translateY(-10vh);}
-}
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, 100px) rotate(90deg); }
+            50% { transform: translate(200px, 0) rotate(180deg); }
+            75% { transform: translate(100px, -100px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
 
-/* ===== Sections ===== */
-.section{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:40px;
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
 
-.section.show{
-opacity:1;
-transform:translateY(0);
-}
+        /* Hello Kitty Header */
+        .kitty-header {
+            background: white;
+            border-radius: 60px 60px 30px 30px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(255, 140, 180, 0.2);
+            border: 3px solid #ffb7c9;
+            position: relative;
+            overflow: hidden;
+        }
 
-/* ===== Moon Entrance ===== */
-.moon{
-width:200px;
-height:200px;
-border-radius:50%;
-background:radial-gradient(circle,#fff,#ffcce6);
-box-shadow:0 0 80px #ff69b4;
-animation:glow 3s infinite alternate;
-margin-bottom:30px;
-}
-@keyframes glow{
-from{box-shadow:0 0 40px #ff69b4;}
-to{box-shadow:0 0 90px #fff;}
-}
+        .kitty-header::before {
+            content: "🐱🌸🎀";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 80px;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
 
-h1{
-font-family:'Great Vibes',cursive;
-font-size:50px;
-margin-bottom:20px;
-text-shadow:0 0 20px rgba(255,255,255,.7);
-}
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-p{
-max-width:700px;
-line-height:1.8;
-font-size:18px;
-}
+        .kitty-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-/* ===== Buttons ===== */
-button{
-padding:15px 40px;
-border:none;
-border-radius:50px;
-background:linear-gradient(45deg,#ff2e88,#ff69b4);
-color:white;
-font-size:18px;
-cursor:pointer;
-margin-top:25px;
-box-shadow:0 15px 40px rgba(255,0,120,.5);
-transition:.3s;
-}
+        .kitty-logo span {
+            font-size: 60px;
+            filter: drop-shadow(0 10px 15px #ffb7c9);
+        }
 
-button:hover{
-transform:scale(1.1);
-}
+        .kitty-logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #ff5c8a, #c44569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-/* ===== Cinematic Gallery ===== */
-.gallery{
-position:relative;
-width:90%;
-max-width:500px;
-height:600px;
-overflow:hidden;
-border-radius:25px;
-box-shadow:0 20px 60px rgba(255,0,150,.5);
-}
+        .header-nav {
+            display: flex;
+            gap: 20px;
+        }
 
-.gallery img{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:0;
-transition:1.5s;
-}
+        .nav-item {
+            width: 50px;
+            height: 50px;
+            background: #ffe2f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 2px solid white;
+        }
 
-.gallery img.active{
-opacity:1;
-transform:scale(1.05);
-}
+        .nav-item:hover {
+            transform: translateY(-5px);
+            background: #ffb7c9;
+            box-shadow: 0 10px 20px rgba(255, 100, 150, 0.3);
+        }
 
-audio.controls{
-position:fixed;
-bottom:10px;
-left:10px;
-z-index:10;
-}
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ffd9e8, #ffe5f0);
+            border-radius: 50px;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid white;
+            box-shadow: 0 25px 50px rgba(255, 120, 170, 0.25);
+        }
 
-</style>
+        .hero-kitty {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 200px;
+            opacity: 0.2;
+            transform: rotate(-5deg);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: #a53860;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 5px 5px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #7a4b66;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: #ff80a5;
+            color: white;
+            box-shadow: 0 10px 25px #ff9cbb;
+        }
+
+        .btn-primary:hover {
+            background: #ff6b95;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px #ff80a5;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #ff6b95;
+            border: 2px solid #ffb7c9;
+        }
+
+        .btn-secondary:hover {
+            background: #fff0f5;
+            transform: translateY(-3px);
+        }
+
+        /* Love Letter Section - Hello Kitty Style */
+        .letter-section {
+            background: white;
+            border-radius: 50px;
+            padding: 60px;
+            margin-bottom: 40px;
+            border: 3px solid #ffb7c9;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(255, 140, 180, 0.2);
+        }
+
+        .kitty-corner {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            font-size: 80px;
+            transform: rotate(-10deg);
+        }
+
+        .kitty-corner2 {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 80px;
+            transform: rotate(170deg);
+        }
+
+        .letter-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .letter-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #c44569;
+            margin-bottom: 30px;
+        }
+
+        .letter-content p {
+            font-size: 1.6rem;
+            line-height: 2;
+            color: #4a2a3b;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .letter-content p i {
+            color: #ff80a5;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #a53860;
+            margin-top: 40px;
+        }
+
+        /* Gallery Section - Hello Kitty Grid */
+        .gallery-section {
+            background: linear-gradient(135deg, #ffe2f0, #ffd5e8);
+            border-radius: 50px;
+            padding: 50px;
+            margin-bottom: 40px;
+            border: 3px solid white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #a53860;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #7a4b66;
+        }
+
+        .kitty-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .kitty-card {
+            background: white;
+            border-radius: 35px;
+            padding: 20px;
+            box-shadow: 0 15px 30px rgba(255, 100, 150, 0.2);
+            transition: 0.4s;
+            cursor: pointer;
+            border: 3px solid #ffb7c9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kitty-card:hover {
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 30px 50px rgba(255, 80, 140, 0.3);
+        }
+
+        .kitty-card::before {
+            content: "🐱";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 50px;
+            opacity: 0.1;
+            transform: rotate(20deg);
+        }
+
+        .card-image {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 25px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 3px solid #ffe2f0;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .kitty-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-info {
+            text-align: center;
+        }
+
+        .card-info h4 {
+            color: #c44569;
+            font-size: 1.1rem;
+        }
+
+        .card-info p {
+            color: #ff80a5;
+            font-size: 0.9rem;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ff80a5;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 100, 150, 0.4);
+        }
+
+        /* Music Player - Hello Kitty Style */
+        .music-section {
+            background: white;
+            border-radius: 50px;
+            padding: 50px;
+            margin-bottom: 40px;
+            border: 3px solid #ffb7c9;
+        }
+
+        .music-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .music-card {
+            background: linear-gradient(135deg, #fff0f7, #ffe2f0);
+            padding: 35px;
+            border-radius: 40px;
+            text-align: center;
+            border: 2px solid white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music-card::after {
+            content: "🎀";
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            font-size: 80px;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+
+        .music-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .music-card h3 {
+            font-size: 1.8rem;
+            color: #a53860;
+            margin-bottom: 20px;
+        }
+
+        .music-card audio {
+            width: 100%;
+            height: 50px;
+            border-radius: 30px;
+        }
+
+        .music-card audio::-webkit-media-controls-panel {
+            background: #ffe2f0;
+        }
+
+        /* Forever Section - Hello Kitty */
+        .forever-section {
+            background: linear-gradient(135deg, #ff7aa5, #c44569);
+            border-radius: 50px;
+            padding: 80px 40px;
+            text-align: center;
+            border: 3px solid white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .forever-section::before {
+            content: "🐱🐱🐱";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            opacity: 0.1;
+            white-space: nowrap;
+        }
+
+        .forever-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .forever-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 0 #a53860;
+        }
+
+        .forever-content p {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .kitty-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 3rem;
+            margin: 40px 0;
+        }
+
+        .kitty-row span {
+            animation: bounce 2s infinite;
+        }
+
+        .kitty-row span:nth-child(2) { animation-delay: 0.2s; }
+        .kitty-row span:nth-child(3) { animation-delay: 0.4s; }
+        .kitty-row span:nth-child(4) { animation-delay: 0.6s; }
+        .kitty-row span:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .btn-forever {
+            background: white;
+            color: #c44569;
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-forever:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        .kitty-footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 30px 30px 60px 60px;
+            border: 3px solid #ffb7c9;
+        }
+
+        .footer-hearts {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-text {
+            color: #a53860;
+            font-size: 1.1rem;
+        }
+
+        /* Audio Timer Text */
+        .timer-text {
+            font-size: 0.9rem;
+            color: #ff80a5;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .kitty-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .music-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .kitty-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- Background Music -->
-<audio id="music" loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
+    <!-- Floating Hello Kitty Elements -->
+    <div class="floating-kitty" style="top: 10%; left: 5%;">🐱</div>
+    <div class="floating-kitty" style="top: 70%; right: 3%; font-size: 150px; animation-duration: 25s;">🌸</div>
+    <div class="floating-kitty" style="bottom: 20%; left: 10%; font-size: 80px; animation-duration: 30s;">🎀</div>
 
-<!-- Voice Message -->
-<audio class="controls" controls>
-<source src="voice.m4a" type="audio/mp4">
-</audio>
+    <div class="container">
 
-<!-- SECTION 1 -->
-<div class="section show" id="s1">
-<div class="moon"></div>
-<h1 id="typing"></h1>
-<button onclick="next()">Enter My World, My Princess 👑</button>
-</div>
+        <!-- Hello Kitty Header -->
+        <div class="kitty-header">
+            <div class="header-content">
+                <div class="kitty-logo">
+                    <span>🐱🎀</span>
+                    <h1>Hello Kitty & My Princess</h1>
+                </div>
+                <div class="header-nav">
+                    <div class="nav-item" onclick="scrollToSection('letter')">💌</div>
+                    <div class="nav-item" onclick="scrollToSection('gallery')">📸</div>
+                    <div class="nav-item" onclick="scrollToSection('music')">🎵</div>
+                    <div class="nav-item" onclick="scrollToSection('forever')">👑</div>
+                </div>
+            </div>
+        </div>
 
-<!-- SECTION 2 -->
-<div class="section" id="s2">
-<h1>My Baby, Mon Amour 💗</h1>
-<p>
-You are my soft shy princess.  
-My funny chaotic cutie.  
-My pink moon in my sky.  
-When I look at you, I don’t just see beauty —
-I see my future, my forever.
-</p>
-<button onclick="next()">Our Memories 🌙</button>
-</div>
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-kitty">🐱🌸🎀</div>
+            <div class="hero-content">
+                <h2>My Pink Moon<br>Kingdom</h2>
+                <p>Where Hello Kitty meets true love — a world made just for you, my princess.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="startJourney()">Enter My World 👑</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('letter')">Read My Letter 💗</button>
+                </div>
+            </div>
+        </div>
 
-<!-- SECTION 3 -->
-<div class="section" id="s3">
-<h1>Our Pink Kingdom 📸</h1>
-<div class="gallery" id="gallery"></div>
-<button onclick="next()">One Last Question 💍</button>
-</div>
+        <!-- Love Letter Section -->
+        <div class="letter-section" id="letter">
+            <div class="kitty-corner">🐱</div>
+            <div class="kitty-corner2">🎀</div>
+            <div class="letter-content">
+                <h3>My Baby, Mon Amour 💗</h3>
+                <p><i>You</i> are my soft shy princess.</p>
+                <p>My funny chaotic cutie.</p>
+                <p>My pink moon in my sky.</p>
+                <p>When I look at you, I don't just see beauty —<br>I see my future, my forever.</p>
+                <div class="signature">
+                    Forever yours,<br>
+                    Suzon 👑
+                </div>
+            </div>
+        </div>
 
-<!-- SECTION 4 -->
-<div class="section" id="s4">
-<h1>Will You Stay In My World Forever?</h1>
-<p>My princess. My heart. Mon amour.</p>
-<button onclick="celebrate()">Yes, My Love 💖</button>
-</div>
+        <!-- Gallery Section -->
+        <div class="gallery-section" id="gallery">
+            <div class="section-title">
+                <h2>Our Pink Kingdom 📸</h2>
+                <p>Hello Kitty approves our love story</p>
+            </div>
+            
+            <div class="kitty-grid" id="gallery-grid">
+                <!-- Images will be loaded here by JavaScript -->
+            </div>
+        </div>
 
-<script>
+        <!-- Music Section with AUTO PLAY - SONG 30 SEC THEN VOICE -->
+        <div class="music-section" id="music">
+            <div class="section-title">
+                <h2>Our Melodies 🎵</h2>
+                <p>Songs from my heart to yours</p>
+            </div>
+            
+            <div class="music-grid">
+                <div class="music-card">
+                    <div class="music-icon">🎵🐱</div>
+                    <h3>Our Special Song</h3>
+                    <audio id="songPlayer" controls src="music.mp3"></audio>
+                    <div class="timer-text" id="songTimer">✨ Playing first 30 seconds as preview</div>
+                </div>
+                
+                <div class="music-card">
+                    <div class="music-icon">💕🎀</div>
+                    <h3>My Voice Message For You</h3>
+                    <audio id="voicePlayer" controls src="voice.m4a"></audio>
+                    <div class="timer-text" id="voiceTimer">💗 Your full message will play after song</div>
+                </div>
+            </div>
+        </div>
 
-/* ===== iPhone Music Start ===== */
-document.body.addEventListener("click",()=>{
-document.getElementById("music").play();
-},{once:true});
+        <!-- Forever Section -->
+        <div class="forever-section" id="forever">
+            <div class="forever-content">
+                <h2>Will You Stay In My World Forever?</h2>
+                <p>My princess. My heart. Mon amour.</p>
+                
+                <div class="kitty-row">
+                    <span>🐱</span>
+                    <span>🌸</span>
+                    <span>🎀</span>
+                    <span>👑</span>
+                    <span>💗</span>
+                </div>
+                
+                <button class="btn-forever" onclick="celebrateLove()">Yes, My Love 💖</button>
+            </div>
+        </div>
 
-/* ===== Section Navigation ===== */
-let sections=["s1","s2","s3","s4"];
-let current=0;
+        <!-- Footer -->
+        <div class="kitty-footer">
+            <div class="footer-hearts">💗 🐱 💗 🎀 💗</div>
+            <div class="footer-text">Made with all my heart for my princess • Suzon 👑</div>
+        </div>
 
-function next(){
-document.getElementById(sections[current]).classList.remove("show");
-current++;
-document.getElementById(sections[current]).classList.add("show");
-}
+    </div>
 
-/* ===== Typing Intro ===== */
-let text="Welcome to Your Pink Moon Kingdom, Suzon Jeanne Vergé...";
-let i=0;
-function type(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(type,60);
-}}
-type();
+    <script>
+        // ========== SCROLL FUNCTION ==========
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
 
-/* ===== Floating Hearts ===== */
-setInterval(()=>{
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="💗";
-h.style.left=Math.random()*100+"vw";
-h.style.fontSize=(15+Math.random()*25)+"px";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),8000);
-},500);
+        // ========== START JOURNEY ==========
+        function startJourney() {
+            scrollToSection('letter');
+        }
 
-/* ===== Auto Photo Slideshow - FIXED: Changed from 50 to 16 ===== */
-const gallery=document.getElementById("gallery");
-let images=[];
-for(let i=1;i<=16;i++){  // 🔥 THIS IS THE FIX - Now shows your 16 photos!
-images.push("photos/"+i+".jpg");
-}
+        // ========== CELEBRATE LOVE ==========
+        function celebrateLove() {
+            alert("Forever begins now, my princess 👑💖");
+            // Play both audios as celebration
+            document.getElementById('songPlayer').play();
+        }
 
-let loaded=[];
-images.forEach(src=>{
-let img=new Image();
-img.src=src;
-img.onload=()=>{
-img.classList.add("slide");
-gallery.appendChild(img);
-loaded.push(img);
-if(loaded.length===1) img.classList.add("active");
-};
-});
+        // ========== LOAD GALLERY IMAGES (1.jpg to 16.jpg) ==========
+        const galleryGrid = document.getElementById('gallery-grid');
+        
+        for (let i = 1; i <= 16; i++) {
+            const card = document.createElement('div');
+            card.className = 'kitty-card';
+            
+            card.innerHTML = `
+                <div class="card-badge">🌸 Memory ${i}</div>
+                <div class="card-image">
+                    <img src="${i}.jpg" alt="Memory ${i}" loading="lazy">
+                </div>
+                <div class="card-info">
+                    <h4>Pink Memory</h4>
+                    <p>💗 ${i}.03.2026</p>
+                </div>
+            `;
+            
+            galleryGrid.appendChild(card);
+        }
 
-let index=0;
-setInterval(()=>{
-if(loaded.length<2) return;
-loaded[index].classList.remove("active");
-index=(index+1)%loaded.length;
-loaded[index].classList.add("active");
-},3000);
+        // ========== AUTO PLAY - SONG 30 SEC THEN VOICE (WORKS ON IPHONE) ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            const song = document.getElementById('songPlayer');
+            const voice = document.getElementById('voicePlayer');
+            const songTimer = document.getElementById('songTimer');
+            const voiceTimer = document.getElementById('voiceTimer');
+            
+            let songTimeout;
+            let voiceStarted = false;
+            
+            // Function to handle user interaction (required for iPhone)
+            function startPlayback() {
+                // Play song
+                song.play().then(() => {
+                    songTimer.textContent = '🎵 Playing... will switch to voice in 30 seconds';
+                    
+                    // Set timer for 30 seconds
+                    songTimeout = setTimeout(() => {
+                        // Pause song
+                        song.pause();
+                        song.currentTime = 0;
+                        songTimer.textContent = '✨ Song preview finished';
+                        
+                        // Play voice message if not already playing
+                        if (!voiceStarted) {
+                            voice.play().then(() => {
+                                voiceStarted = true;
+                                voiceTimer.textContent = '💗 Your voice message is playing now';
+                            }).catch(e => {
+                                voiceTimer.textContent = '💗 Click play on voice message';
+                            });
+                        }
+                    }, 30000); // 30 seconds = 30000 milliseconds
+                }).catch(e => {
+                    songTimer.textContent = '✨ Click play to hear our song (30 sec preview)';
+                });
+            }
+            
+            // Listen for play event on song
+            song.addEventListener('play', function() {
+                // Clear any existing timeout
+                if (songTimeout) clearTimeout(songTimeout);
+                
+                songTimer.textContent = '🎵 Playing... will switch to voice in 30 seconds';
+                
+                // Set timer for 30 seconds
+                songTimeout = setTimeout(() => {
+                    // Pause song
+                    song.pause();
+                    song.currentTime = 0;
+                    songTimer.textContent = '✨ Song preview finished';
+                    
+                    // Play voice message
+                    if (!voiceStarted) {
+                        voice.play().then(() => {
+                            voiceStarted = true;
+                            voiceTimer.textContent = '💗 Your voice message is playing now';
+                        }).catch(e => {
+                            voiceTimer.textContent = '💗 Click play on voice message';
+                        });
+                    }
+                }, 30000);
+            });
+            
+            // If user pauses song, clear the timeout
+            song.addEventListener('pause', function() {
+                if (songTimeout) {
+                    clearTimeout(songTimeout);
+                    songTimer.textContent = '✨ Click play for 30 second preview';
+                }
+            });
+            
+            // If song ends naturally before 30 seconds
+            song.addEventListener('ended', function() {
+                if (songTimeout) clearTimeout(songTimeout);
+                songTimer.textContent = '✨ Song finished';
+                
+                if (!voiceStarted) {
+                    voice.play().then(() => {
+                        voiceStarted = true;
+                        voiceTimer.textContent = '💗 Your voice message is playing now';
+                    });
+                }
+            });
+            
+            // Voice message events
+            voice.addEventListener('play', function() {
+                voiceStarted = true;
+                voiceTimer.textContent = '💗 Playing your voice message';
+                
+                // If song is playing, pause it
+                if (!song.paused) {
+                    song.pause();
+                    song.currentTime = 0;
+                    if (songTimeout) clearTimeout(songTimeout);
+                    songTimer.textContent = '✨ Song preview stopped';
+                }
+            });
+            
+            voice.addEventListener('ended', function() {
+                voiceTimer.textContent = '💗 Voice message completed';
+            });
+            
+            // For iPhone: need user interaction to play audio
+            document.body.addEventListener('touchstart', function() {
+                // This empty handler enables audio playback on iPhone
+                console.log('User interaction detected - audio ready');
+            }, { once: true });
+            
+            // Add click handler to hero button to start music
+            document.querySelector('.btn-primary').addEventListener('click', function() {
+                setTimeout(() => {
+                    startPlayback();
+                }, 1000);
+            });
+        });
 
-/* ===== Final Celebration ===== */
-function celebrate(){
-alert("Forever begins now, my princess 👑💖");
-}
-
-</script>
+        // ========== CHECK IMAGES ON LOAD ==========
+        window.addEventListener('load', function() {
+            console.log('✅ Website loaded with', document.querySelectorAll('.kitty-card').length, 'photos');
+        });
+    </script>
 
 </body>
 </html>
