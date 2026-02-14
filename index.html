@@ -217,10 +217,10 @@ document.body.appendChild(h);
 setTimeout(()=>h.remove(),8000);
 },500);
 
-/* ===== Auto Photo Slideshow ===== */
+/* ===== Auto Photo Slideshow - FIXED: Changed from 50 to 16 ===== */
 const gallery=document.getElementById("gallery");
 let images=[];
-for(let i=1;i<=50;i++){
+for(let i=1;i<=16;i++){  // 🔥 THIS IS THE FIX - Now shows your 16 photos!
 images.push("photos/"+i+".jpg");
 }
 
