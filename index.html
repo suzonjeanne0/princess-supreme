@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>My Princess 👑 | Suzon</title>
+    <title>For My Suzon 👑</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
@@ -21,7 +21,6 @@
             overflow-x: hidden;
         }
 
-        /* FULL SCREEN SLIDESHOW - CRYSTAL CLEAR */
         .slideshow {
             position: fixed;
             top: 0;
@@ -49,7 +48,6 @@
             opacity: 1;
         }
 
-        /* LIGHTER OVERLAY - So pictures show clearly */
         .overlay {
             position: fixed;
             top: 0;
@@ -61,7 +59,6 @@
             pointer-events: none;
         }
 
-        /* CONTENT */
         .content {
             position: relative;
             z-index: 3;
@@ -72,16 +69,15 @@
             padding: 20px;
         }
 
-        /* GLASS CARD */
         .glass-card {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 192, 203, 0.2);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 30px;
             padding: 40px 30px;
             margin: 30px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 105, 180, 0.5);
+            box-shadow: 0 20px 50px rgba(255, 105, 180, 0.3);
             max-width: 900px;
             width: 95%;
         }
@@ -100,20 +96,6 @@
             margin-bottom: 20px;
             color: #ffb6c1;
             text-align: center;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #ffb6c1;
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 15px;
-            color: white;
-            text-shadow: 2px 2px 4px black;
         }
 
         .btn {
@@ -137,7 +119,33 @@
             box-shadow: 0 20px 40px rgba(255, 20, 147, 0.8);
         }
 
-        /* LOVE LETTER SCROLL BOX */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .badge {
+            background: rgba(255, 105, 180, 0.3);
+            border: 2px solid white;
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            color: white;
+        }
+
+        .special-quote {
+            font-size: 2rem;
+            color: #ffb6c1;
+            text-align: center;
+            font-family: 'Great Vibes', cursive;
+            margin: 20px 0;
+        }
+
         .letter-box {
             max-height: 500px;
             overflow-y: auto;
@@ -145,7 +153,7 @@
             background: rgba(0, 0, 0, 0.4);
             border-radius: 20px;
             margin: 20px 0;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid #ff69b4;
         }
 
         .letter-box p {
@@ -155,7 +163,26 @@
             padding-left: 15px;
         }
 
-        /* AUDIO SECTION */
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .fact-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #ff69b4;
+        }
+
+        .fact-card h3 {
+            color: #ffb6c1;
+            margin-bottom: 10px;
+        }
+
         .audio-container {
             display: flex;
             flex-direction: column;
@@ -166,18 +193,16 @@
         }
 
         .audio-card {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 105, 180, 0.2);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border-radius: 60px;
             padding: 20px 25px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid #ff69b4;
         }
 
         .audio-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
             color: #ffb6c1;
+            margin-bottom: 10px;
         }
 
         audio {
@@ -186,11 +211,6 @@
             border-radius: 25px;
         }
 
-        audio::-webkit-media-controls-panel {
-            background: #ffe4f0;
-        }
-
-        /* FLOATING HEARTS */
         .floating-heart {
             position: fixed;
             font-size: 25px;
@@ -204,30 +224,6 @@
             to { transform: translateY(-10vh); opacity: 0; }
         }
 
-        /* PROGRESS BAR */
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 2px;
-            margin: 10px 0;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff69b4, #ff1493);
-            width: 0%;
-            transition: width 0.1s linear;
-        }
-
-        .timer {
-            font-size: 0.9rem;
-            color: #ffb6c1;
-            margin-top: 5px;
-        }
-
-        /* IMAGE GRID AT BOTTOM */
         .thumbnail-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -240,14 +236,14 @@
             aspect-ratio: 1;
             border-radius: 10px;
             overflow: hidden;
-            border: 2px solid white;
+            border: 2px solid #ff69b4;
             cursor: pointer;
             transition: 0.3s;
         }
 
         .thumbnail:hover {
             transform: scale(1.05);
-            border-color: #ff69b4;
+            border-color: white;
         }
 
         .thumbnail img {
@@ -256,36 +252,94 @@
             object-fit: cover;
         }
 
-        /* RESPONSIVE */
+        .pink-rose {
+            font-size: 3rem;
+            text-align: center;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
         @media (max-width: 600px) {
             h1 { font-size: 3rem; }
-            h2 { font-size: 1.8rem; }
-            p { font-size: 1rem; }
-            .thumbnail-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .fact-grid { grid-template-columns: 1fr; }
+            .thumbnail-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
 
-    <!-- FULL SCREEN SLIDESHOW -->
     <div class="slideshow" id="slideshow"></div>
     <div class="overlay"></div>
 
-    <!-- MAIN CONTENT -->
     <div class="content">
         
-        <!-- WELCOME SECTION -->
+        <!-- WELCOME - Personalized -->
         <div class="glass-card" style="margin-top: 20vh;">
             <h1 id="typing"></h1>
+            
+            <!-- Her favorite phrases -->
+            <div class="badge-container">
+                <span class="badge">👑 My Princess</span>
+                <span class="badge">💗 Olalalala Suleman</span>
+                <span class="badge">🔥 You Crazy Sulemann</span>
+                <span class="badge">💪 I'm Grown Ass Women</span>
+            </div>
+            
             <button class="btn" onclick="startJourney()">Open My Heart 💗</button>
         </div>
 
-        <!-- LOVE SECTION (Hidden initially) -->
+        <!-- LOVE SECTION -->
         <div id="loveSection" style="display: none; width: 100%;">
             
-            <!-- LOVE LETTER - FULL VERSION -->
+            <!-- HER SPECIAL VERSE -->
+            <div class="glass-card">
+                <div class="special-quote">
+                    "God is within her, she will not fall" 💕
+                </div>
+                <div class="special-quote" style="font-size: 1.5rem;">
+                    Pray • Wait • Trust
+                </div>
+            </div>
+            
+            <!-- HER BIRTHDAY & SPECIAL DATE -->
+            <div class="glass-card">
+                <div class="fact-grid">
+                    <div class="fact-card">
+                        <h3>🎂 Birthday</h3>
+                        <p>20 November 2007</p>
+                    </div>
+                    <div class="fact-card">
+                        <h3>💕 We Met</h3>
+                        <p>2-3 January 2025</p>
+                    </div>
+                    <div class="fact-card">
+                        <h3>👁️ Her Eyes</h3>
+                        <p>Beautiful Green 💚</p>
+                    </div>
+                    <div class="fact-card">
+                        <h3>🎀 Favorite</h3>
+                        <p>Hello Kitty</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PINK ROSES FOR HER -->
+            <div class="glass-card">
+                <h2>For You, My Princess 🌹</h2>
+                <div class="pink-rose">
+                    🌸 🌹 🌸 <br>
+                    Pink Roses for My Pink Moon<br>
+                    🌸 🌹 🌸
+                </div>
+                <p style="text-align: center;">Your favorite - pink roses, my love</p>
+            </div>
+            
+            <!-- LOVE LETTER -->
             <div class="glass-card">
                 <h2>My Baby, Mon Amour 💗</h2>
                 <div class="letter-box">
@@ -308,80 +362,95 @@
                     <p>I'm a guy who doesn't cry at funerals. I said I wouldn't cry at our wedding, but I think when I hug you for the first time, I will. I really want to hug you and just melt into you, in your arms — just feel you and give you my love.</p>
                     <p>I need you, my love. I love you. You are the best gift God ever gave me.</p>
                 </div>
-                <p style="font-family: 'Great Vibes', cursive; font-size: 2rem; text-align: center;">Forever yours, Suzon 👑</p>
+                
+                <!-- Her phrases again -->
+                <div class="badge-container">
+                    <span class="badge">Olalalala Suleman</span>
+                    <span class="badge">You Crazy Sulemann</span>
+                    <span class="badge">I'm Grown Ass Women</span>
+                </div>
             </div>
 
-            <!-- AUDIO SECTION -->
+            <!-- HER FAVORITE THINGS -->
             <div class="glass-card">
-                <h2>🎵 For Your Ears Only</h2>
-                
+                <h2>💕 All About My Girl</h2>
+                <div class="fact-grid">
+                    <div class="fact-card">
+                        <h3>🍽️ Favorite Food</h3>
+                        <p>Sundae Caramel<br>Thai Food</p>
+                    </div>
+                    <div class="fact-card">
+                        <h3>🎀 Loves</h3>
+                        <p>Hello Kitty • Pink • Roses</p>
+                    </div>
+                    <div class="fact-card">
+                        <h3>🗺️ Dream Vacation</h3>
+                        <p>Landes, France 🇫🇷</p>
+                    </div>
+                    <div class="fact-card">
+                        <h3>👶 Future Kids</h3>
+                        <p>2 Kids (She says)<br>4 Kids (I say)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AUDIO -->
+            <div class="glass-card">
+                <h2>🎵 For You, My Love</h2>
                 <div class="audio-container">
-                    <!-- VOICE MESSAGE -->
                     <div class="audio-card">
                         <h3>💕 My Voice Message</h3>
                         <audio id="voiceMsg" controls src="voice.m4a"></audio>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="voiceProgress"></div>
-                        </div>
-                        <div class="timer" id="voiceTimer">0:00 / 5:00</div>
                     </div>
-
-                    <!-- SONG -->
                     <div class="audio-card">
-                        <h3>🎵 Our Song</h3>
+                        <h3>🎵 Your Favorite Song</h3>
                         <audio id="songPlayer" controls src="music.mp3"></audio>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="songProgress"></div>
-                        </div>
-                        <div class="timer" id="songTimer">0:00 / 5:00</div>
                     </div>
                 </div>
             </div>
 
-            <!-- THUMBNAIL GRID - See all pictures clearly -->
+            <!-- MEMORIES -->
             <div class="glass-card">
-                <h2>📸 All Our Memories</h2>
+                <h2>📸 Our Memories</h2>
                 <div class="thumbnail-grid" id="thumbnailGrid"></div>
             </div>
 
-            <!-- FOREVER QUESTION -->
+            <!-- FOREVER -->
             <div class="glass-card">
                 <h2 style="font-size: 2.5rem;">Will You Stay In My World Forever?</h2>
-                <p style="font-size: 2rem; text-align: center;">My princess. My heart. Mon amour.</p>
-                <div style="text-align: center;">
-                    <button class="btn" onclick="celebrate()">Yes, My Love 💖</button>
+                <p style="font-size: 2rem;">My princess. My heart. My Suzon.</p>
+                <div class="badge-container">
+                    <span class="badge">Te amo</span>
+                    <span class="badge">Je t'aime</span>
+                    <span class="badge">I love you</span>
                 </div>
+                <button class="btn" onclick="celebrate()">Yes, My Love 💖</button>
             </div>
 
         </div>
-
     </div>
 
     <script>
-        // ========== SETUP FULL SCREEN SLIDESHOW ==========
-        const slideshow = document.getElementById('slideshow');
-        
-        // Create slides for all 16 pictures
+        // SLIDESHOW
         for (let i = 1; i <= 16; i++) {
             const slide = document.createElement('div');
             slide.className = 'slide';
             slide.style.backgroundImage = `url('${i}.jpg')`;
-            slideshow.appendChild(slide);
+            document.getElementById('slideshow').appendChild(slide);
         }
 
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
         slides[currentSlide].classList.add('active');
 
-        // Change slide every 5 seconds
         setInterval(() => {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }, 5000);
 
-        // ========== TYPING EFFECT ==========
-        const text = "Welcome to Your Pink Moon Kingdom...";
+        // TYPING - PERSONALIZED
+        const text = "Welcome My Princess Suzon 👑";
         const typingElement = document.getElementById('typing');
         let i = 0;
 
@@ -389,108 +458,50 @@
             if (i < text.length) {
                 typingElement.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 70);
+                setTimeout(typeWriter, 100);
             }
         }
         typeWriter();
 
-        // ========== START JOURNEY ==========
         function startJourney() {
             document.getElementById('loveSection').style.display = 'block';
             document.getElementById('loveSection').scrollIntoView({ behavior: 'smooth' });
             
-            // Auto play voice message
             setTimeout(() => {
-                const voice = document.getElementById('voiceMsg');
-                voice.play().catch(e => console.log('Auto play prevented'));
+                document.getElementById('voiceMsg').play().catch(e => {});
             }, 1000);
         }
 
-        // ========== CREATE THUMBNAIL GRID ==========
-        const thumbnailGrid = document.getElementById('thumbnailGrid');
-        
+        // THUMBNAILS
         for (let i = 1; i <= 16; i++) {
             const thumb = document.createElement('div');
             thumb.className = 'thumbnail';
-            thumb.innerHTML = `<img src="${i}.jpg" alt="Memory ${i}" loading="lazy">`;
+            thumb.innerHTML = `<img src="${i}.jpg" alt="Memory ${i}">`;
             thumb.onclick = () => {
-                // Click thumbnail to jump to that slide
                 slides.forEach(s => s.classList.remove('active'));
                 slides[i-1].classList.add('active');
                 currentSlide = i-1;
             };
-            thumbnailGrid.appendChild(thumb);
+            document.getElementById('thumbnailGrid').appendChild(thumb);
         }
 
-        // ========== PROGRESS BARS ==========
-        const voice = document.getElementById('voiceMsg');
-        const song = document.getElementById('songPlayer');
-        
-        voice.addEventListener('timeupdate', function() {
-            const progress = (voice.currentTime / voice.duration) * 100;
-            document.getElementById('voiceProgress').style.width = progress + '%';
-            
-            const mins = Math.floor(voice.currentTime / 60);
-            const secs = Math.floor(voice.currentTime % 60);
-            const totalMins = Math.floor(voice.duration / 60);
-            const totalSecs = Math.floor(voice.duration % 60);
-            document.getElementById('voiceTimer').textContent = 
-                `${mins}:${secs.toString().padStart(2,'0')} / ${totalMins}:${totalSecs.toString().padStart(2,'0')}`;
-        });
-        
-        song.addEventListener('timeupdate', function() {
-            const progress = (song.currentTime / song.duration) * 100;
-            document.getElementById('songProgress').style.width = progress + '%';
-            
-            const mins = Math.floor(song.currentTime / 60);
-            const secs = Math.floor(song.currentTime % 60);
-            const totalMins = Math.floor(song.duration / 60);
-            const totalSecs = Math.floor(song.duration % 60);
-            document.getElementById('songTimer').textContent = 
-                `${mins}:${secs.toString().padStart(2,'0')} / ${totalMins}:${totalSecs.toString().padStart(2,'0')}`;
-        });
-
-        // ========== FLOATING HEARTS ==========
+        // HEARTS
         setInterval(() => {
             const heart = document.createElement('div');
             heart.className = 'floating-heart';
-            heart.innerHTML = ['💗', '💖', '💘', '💝', '💕'][Math.floor(Math.random() * 5)];
+            heart.innerHTML = '💗';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.fontSize = (15 + Math.random() * 30) + 'px';
             heart.style.animationDuration = (4 + Math.random() * 6) + 's';
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 10000);
         }, 300);
 
-        // ========== CELEBRATE ==========
         function celebrate() {
             alert("Forever begins now, my princess 👑💖");
-            
-            // Heart explosion
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'floating-heart';
-                    heart.innerHTML = '💗';
-                    heart.style.left = '50%';
-                    heart.style.top = '50%';
-                    heart.style.fontSize = '40px';
-                    heart.style.animation = 'floatUp 3s linear';
-                    document.body.appendChild(heart);
-                    setTimeout(() => heart.remove(), 3000);
-                }, i * 100);
-            }
         }
 
-        // ========== IPHONE AUDIO UNLOCK ==========
-        document.body.addEventListener('touchstart', function() {
-            console.log('Screen touched');
-        }, {once: true});
-
-        // ========== PRELOAD IMAGES ==========
-        window.addEventListener('load', function() {
-            console.log('✅ Website loaded with 16 crystal clear pictures');
-        });
+        // iPhone unlock
+        document.body.addEventListener('touchstart', () => {}, {once: true});
     </script>
 
 </body>
