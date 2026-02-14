@@ -2,457 +2,176 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Princess 👑 | Suzon</title>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Poppins', sans-serif;
             background: black;
             color: white;
+            font-family: Arial, sans-serif;
         }
-
-        /* FULL SCREEN SLIDESHOW */
-        .slideshow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-        }
-
+        
         .slide {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1s;
+            z-index: 1;
         }
-
+        
         .slide.active {
             opacity: 1;
         }
-
-        /* DARK OVERLAY FOR TEXT TO BE READABLE */
+        
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0,0,0,0.5);
             z-index: 2;
-            pointer-events: none;
         }
-
-        /* CONTENT ON TOP OF PICTURES */
+        
         .content {
             position: relative;
             z-index: 3;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             padding: 20px;
-            pointer-events: none;
-        }
-
-        .content * {
-            pointer-events: auto;
-        }
-
-        /* GLASS CARD EFFECT */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 40px 30px;
-            margin: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             max-width: 800px;
-            width: 90%;
+            margin: 50px auto;
             text-align: center;
         }
-
-        h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4rem;
-            color: white;
-            text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        p {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .love-letter {
-            font-size: 1.5rem;
-            font-weight: 300;
-        }
-
-        .love-letter i {
-            color: #ffb6c1;
-            font-style: normal;
-        }
-
-        /* AUDIO PLAYER - CUSTOM */
-        .audio-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-            max-width: 400px;
-            margin: 30px auto;
-        }
-
-        .audio-card {
-            background: rgba(255, 255, 255, 0.2);
+        
+        .card {
+            background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 60px;
-            padding: 15px 25px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
         }
-
-        .audio-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+        
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
             color: #ffb6c1;
         }
-
-        audio {
-            width: 100%;
-            height: 45px;
-            border-radius: 25px;
-        }
-
-        audio::-webkit-media-controls-panel {
-            background: #ffe4f0;
-        }
-
-        /* BUTTON */
-        .btn {
-            background: linear-gradient(45deg, #ff1493, #ff69b4);
-            border: none;
-            padding: 18px 45px;
-            border-radius: 60px;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            border: 2px solid white;
-            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.5);
+        
+        p {
+            font-size: 1.3em;
+            line-height: 1.6;
             margin: 20px 0;
         }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(255, 20, 147, 0.8);
+        
+        button {
+            background: #ff1493;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 0;
         }
-
-        /* HEARTS ANIMATION */
-        .floating-heart {
-            position: fixed;
-            font-size: 25px;
-            animation: floatUp 8s linear infinite;
-            z-index: 10;
-            pointer-events: none;
-        }
-
-        @keyframes floatUp {
-            from { transform: translateY(100vh); opacity: 1; }
-            to { transform: translateY(-10vh); opacity: 0; }
-        }
-
-        /* PROGRESS BAR */
-        .progress-bar {
+        
+        audio {
             width: 100%;
-            height: 4px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 2px;
             margin: 10px 0;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff69b4, #ff1493);
-            width: 0%;
-            transition: width 0.1s linear;
-        }
-
-        /* TIMER */
-        .timer {
-            font-size: 0.9rem;
-            color: #ffb6c1;
-            margin-top: 5px;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 600px) {
-            h1 { font-size: 3rem; }
-            p { font-size: 1.1rem; }
-            .glass-card { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- FULL SCREEN SLIDESHOW BACKGROUND -->
-    <div class="slideshow" id="slideshow"></div>
+    <div id="slideshow"></div>
     <div class="overlay"></div>
-
-    <!-- MAIN CONTENT -->
+    
     <div class="content">
+        <div class="card">
+            <h1 id="typing"></h1>
+            <button onclick="start()">Open My Heart 💗</button>
+        </div>
         
-        <!-- SECTION 1 - WELCOME -->
-        <div class="glass-card" style="margin-top: 30vh;">
-            <h1>My Princess 👑</h1>
-            <p id="typing-text"></p>
-            <button class="btn" onclick="revealLove()">Open My Heart 💗</button>
-        </div>
-
-        <!-- SECTION 2 - LOVE LETTER (HIDDEN FIRST) -->
-        <div id="loveSection" style="display: none; width: 100%; display: flex; flex-direction: column; align-items: center;">
-            
-            <div class="glass-card">
+        <div id="loveSection" style="display: none;">
+            <div class="card">
                 <h2>My Baby, Mon Amour 💗</h2>
-                <p class="love-letter">
-                    <i>You</i> are my soft shy princess.<br>
-                    My funny chaotic cutie.<br>
-                    My pink moon in my sky.<br>
-                    When I look at you,<br>
-                    I don't just see beauty —<br>
-                    I see my future, my forever.
-                </p>
-                <p style="font-family: 'Great Vibes', cursive; font-size: 2rem;">Suzon</p>
+                <p>You are my soft shy princess.<br>My funny chaotic cutie.<br>My pink moon in my sky.<br>When I look at you,<br>I see my future, my forever.</p>
             </div>
-
-            <!-- AUDIO SECTION -->
-            <div class="glass-card">
-                <h2>🎵 For Your Ears Only</h2>
+            
+            <div class="card">
+                <h3>💕 My Voice Message</h3>
+                <audio id="voice" controls src="voice.m4a"></audio>
                 
-                <div class="audio-container">
-                    <!-- VOICE MESSAGE - AUTO PLAYS -->
-                    <div class="audio-card">
-                        <h3>💕 My Voice Message (Auto Plays)</h3>
-                        <audio id="voiceMsg" controls src="voice.m4a"></audio>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="voiceProgress"></div>
-                        </div>
-                        <div class="timer" id="voiceTimer">0:00 / 5:00</div>
-                    </div>
-
-                    <!-- SONG - MANUAL PLAY -->
-                    <div class="audio-card">
-                        <h3>🎵 Our Song (Click to Play)</h3>
-                        <audio id="songPlayer" controls src="music.mp3"></audio>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="songProgress"></div>
-                        </div>
-                        <div class="timer" id="songTimer">0:00 / 5:00</div>
-                    </div>
-                </div>
+                <h3>🎵 Our Song</h3>
+                <audio id="song" controls src="music.mp3"></audio>
             </div>
-
-            <!-- FOREVER QUESTION -->
-            <div class="glass-card">
-                <h2 style="font-size: 2.5rem;">Will You Stay In My World Forever?</h2>
-                <p style="font-size: 2rem;">My princess. My heart. Mon amour.</p>
-                <button class="btn" onclick="celebrate()">Yes, My Love 💖</button>
+            
+            <div class="card">
+                <h2>Will You Stay In My World Forever?</h2>
+                <p>My princess. My heart. Mon amour.</p>
+                <button onclick="celebrate()">Yes, My Love 💖</button>
             </div>
-
         </div>
-
     </div>
 
     <script>
-        // ========== SETUP FULL SCREEN SLIDESHOW WITH 16 PICTURES ==========
-        const slideshow = document.getElementById('slideshow');
+        // Load 16 pictures
+        for(let i = 1; i <= 16; i++) {
+            let div = document.createElement('div');
+            div.className = 'slide';
+            div.style.backgroundImage = `url('${i}.jpg')`;
+            document.getElementById('slideshow').appendChild(div);
+        }
         
-        // Create slides for all 16 pictures
-        for (let i = 1; i <= 16; i++) {
-            const slide = document.createElement('div');
-            slide.className = 'slide';
-            slide.style.backgroundImage = `url('${i}.jpg')`;
-            slideshow.appendChild(slide);
-        }
-
-        const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-
-        // Show first slide
-        slides[currentSlide].classList.add('active');
-
-        // Change slide every 5 seconds
+        let slides = document.querySelectorAll('.slide');
+        let current = 0;
+        slides[current].classList.add('active');
+        
         setInterval(() => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
         }, 5000);
-
-        // ========== TYPING EFFECT ==========
-        const text = "Welcome to Your Pink Moon Kingdom...";
-        const typingElement = document.getElementById('typing-text');
+        
+        // Typing effect
+        let text = "Welcome to Your Pink Moon Kingdom...";
         let i = 0;
-
-        function typeWriter() {
-            if (i < text.length) {
-                typingElement.innerHTML += text.charAt(i);
+        function type() {
+            if(i < text.length) {
+                document.getElementById('typing').innerHTML += text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 70);
+                setTimeout(type, 70);
             }
         }
-        typeWriter();
-
-        // ========== REVEAL LOVE SECTION ==========
-        function revealLove() {
-            document.getElementById('loveSection').style.display = 'flex';
-            document.getElementById('loveSection').scrollIntoView({ behavior: 'smooth' });
+        type();
+        
+        // Start function
+        function start() {
+            document.getElementById('loveSection').style.display = 'block';
+            document.getElementById('loveSection').scrollIntoView({behavior: 'smooth'});
             
-            // Auto play voice message when section is revealed
+            // Auto play voice
             setTimeout(() => {
-                const voice = document.getElementById('voiceMsg');
-                voice.play().catch(e => console.log('Auto play prevented, user must interact first'));
-            }, 500);
+                document.getElementById('voice').play();
+            }, 1000);
         }
-
-        // ========== VOICE MESSAGE AUTO PLAY (WORKS ON IPHONE) ==========
-        document.addEventListener('DOMContentLoaded', function() {
-            const voice = document.getElementById('voiceMsg');
-            const song = document.getElementById('songPlayer');
-            
-            // For iPhone: need user interaction first
-            document.body.addEventListener('touchstart', function enableAudio() {
-                document.body.removeEventListener('touchstart', enableAudio);
-                
-                // Create a silent audio context to unlock audio on iOS
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                if (AudioContext) {
-                    const ctx = new AudioContext();
-                    ctx.resume();
-                }
-                
-                console.log('Audio ready for iPhone');
-            });
-            
-            // Setup progress bars
-            setupProgressBars();
-        });
-
-        // ========== PROGRESS BARS ==========
-        function setupProgressBars() {
-            const voice = document.getElementById('voiceMsg');
-            const song = document.getElementById('songPlayer');
-            
-            // Voice message progress
-            voice.addEventListener('timeupdate', function() {
-                const progress = (voice.currentTime / voice.duration) * 100;
-                document.getElementById('voiceProgress').style.width = progress + '%';
-                
-                const mins = Math.floor(voice.currentTime / 60);
-                const secs = Math.floor(voice.currentTime % 60);
-                const totalMins = Math.floor(voice.duration / 60);
-                const totalSecs = Math.floor(voice.duration % 60);
-                document.getElementById('voiceTimer').textContent = 
-                    `${mins}:${secs.toString().padStart(2,'0')} / ${totalMins}:${totalSecs.toString().padStart(2,'0')}`;
-            });
-            
-            // Song progress
-            song.addEventListener('timeupdate', function() {
-                const progress = (song.currentTime / song.duration) * 100;
-                document.getElementById('songProgress').style.width = progress + '%';
-                
-                const mins = Math.floor(song.currentTime / 60);
-                const secs = Math.floor(song.currentTime % 60);
-                const totalMins = Math.floor(song.duration / 60);
-                const totalSecs = Math.floor(song.duration % 60);
-                document.getElementById('songTimer').textContent = 
-                    `${mins}:${secs.toString().padStart(2,'0')} / ${totalMins}:${totalSecs.toString().padStart(2,'0')}`;
-            });
-        }
-
-        // ========== FLOATING HEARTS ==========
-        setInterval(() => {
-            const heart = document.createElement('div');
-            heart.className = 'floating-heart';
-            heart.innerHTML = ['💗', '💖', '💘', '💝', '💕'][Math.floor(Math.random() * 5)];
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.fontSize = (15 + Math.random() * 30) + 'px';
-            heart.style.animationDuration = (4 + Math.random() * 6) + 's';
-            document.body.appendChild(heart);
-            
-            setTimeout(() => heart.remove(), 10000);
-        }, 300);
-
-        // ========== CELEBRATE ==========
+        
+        // iPhone audio unlock
+        document.body.addEventListener('touchstart', function() {
+            console.log('Screen touched');
+        }, {once: true});
+        
         function celebrate() {
-            alert("Forever begins now, my princess 👑💖");
-            
-            // Create heart explosion
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'floating-heart';
-                    heart.innerHTML = '💗';
-                    heart.style.left = '50%';
-                    heart.style.top = '50%';
-                    heart.style.fontSize = '40px';
-                    heart.style.animation = 'floatUp 3s linear';
-                    document.body.appendChild(heart);
-                    setTimeout(() => heart.remove(), 3000);
-                }, i * 100);
-            }
+            alert('Forever begins now, my princess 👑💖');
         }
-
-        // ========== SCROLL TO SECTION ==========
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // ========== PRELOAD IMAGES ==========
-        window.addEventListener('load', function() {
-            console.log('✅ All 16 pictures loaded as full screen background');
-            
-            // Check if images exist
-            for (let i = 1; i <= 16; i++) {
-                const img = new Image();
-                img.onload = () => console.log(`✅ Image ${i}.jpg loaded`);
-                img.onerror = () => console.log(`❌ Image ${i}.jpg not found`);
-                img.src = `${i}.jpg`;
-            }
-        });
     </script>
-
 </body>
 </html>
