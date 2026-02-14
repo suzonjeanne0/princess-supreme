@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For My Suzon 👑</title>
+    <title>For My Princess Suzon 👑</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
@@ -21,6 +21,7 @@
             overflow-x: hidden;
         }
 
+        /* FULL SCREEN SLIDESHOW - NO CROPPING */
         .slideshow {
             position: fixed;
             top: 0;
@@ -38,7 +39,7 @@
             height: 100%;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
-            background-size: contain;
+            background-size: contain;  /* THIS PREVENTS CROPPING */
             background-position: center;
             background-repeat: no-repeat;
             background-color: black;
@@ -91,13 +92,6 @@
             text-align: center;
         }
 
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #ffb6c1;
-            text-align: center;
-        }
-
         .btn {
             background: linear-gradient(45deg, #ff1493, #ff69b4);
             border: none;
@@ -111,12 +105,20 @@
             border: 2px solid white;
             box-shadow: 0 10px 30px rgba(255, 20, 147, 0.5);
             margin: 20px 0;
-            display: inline-block;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(255, 20, 147, 0.8);
+        .volume-message {
+            font-size: 2rem;
+            color: #ffb6c1;
+            text-align: center;
+            animation: pulse 1.5s infinite;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); color: white; }
         }
 
         .badge-container {
@@ -133,17 +135,8 @@
             border-radius: 50px;
             padding: 10px 25px;
             font-size: 1.2rem;
-            font-weight: 600;
             backdrop-filter: blur(5px);
             color: white;
-        }
-
-        .special-quote {
-            font-size: 2rem;
-            color: #ffb6c1;
-            text-align: center;
-            font-family: 'Great Vibes', cursive;
-            margin: 20px 0;
         }
 
         .letter-box {
@@ -178,11 +171,6 @@
             border: 1px solid #ff69b4;
         }
 
-        .fact-card h3 {
-            color: #ffb6c1;
-            margin-bottom: 10px;
-        }
-
         .audio-container {
             display: flex;
             flex-direction: column;
@@ -194,21 +182,14 @@
 
         .audio-card {
             background: rgba(255, 105, 180, 0.2);
-            backdrop-filter: blur(10px);
             border-radius: 60px;
             padding: 20px 25px;
             border: 2px solid #ff69b4;
         }
 
-        .audio-card h3 {
-            color: #ffb6c1;
-            margin-bottom: 10px;
-        }
-
         audio {
             width: 100%;
             height: 45px;
-            border-radius: 25px;
         }
 
         .floating-heart {
@@ -224,6 +205,7 @@
             to { transform: translateY(-10vh); opacity: 0; }
         }
 
+        /* THUMBNAILS - ALSO NO CROPPING */
         .thumbnail-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -238,35 +220,18 @@
             overflow: hidden;
             border: 2px solid #ff69b4;
             cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .thumbnail:hover {
-            transform: scale(1.05);
-            border-color: white;
+            background: black;
         }
 
         .thumbnail img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-        }
-
-        .pink-rose {
-            font-size: 3rem;
-            text-align: center;
-            margin: 20px 0;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            object-fit: contain;  /* NO CROPPING */
+            background: black;
         }
 
         @media (max-width: 600px) {
             h1 { font-size: 3rem; }
-            .fact-grid { grid-template-columns: 1fr; }
             .thumbnail-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
@@ -278,16 +243,19 @@
 
     <div class="content">
         
-        <!-- WELCOME - Personalized -->
+        <!-- WELCOME -->
         <div class="glass-card" style="margin-top: 20vh;">
             <h1 id="typing"></h1>
             
-            <!-- Her favorite phrases -->
+            <!-- "MY PRINCESS VOLUME UP" MESSAGE -->
+            <div class="volume-message">
+                🔊 MY PRINCESS VOLUME UP 🔊
+            </div>
+            
             <div class="badge-container">
                 <span class="badge">👑 My Princess</span>
                 <span class="badge">💗 Olalalala Suleman</span>
                 <span class="badge">🔥 You Crazy Sulemann</span>
-                <span class="badge">💪 I'm Grown Ass Women</span>
             </div>
             
             <button class="btn" onclick="startJourney()">Open My Heart 💗</button>
@@ -296,17 +264,20 @@
         <!-- LOVE SECTION -->
         <div id="loveSection" style="display: none; width: 100%;">
             
-            <!-- HER SPECIAL VERSE -->
+            <!-- Volume message again -->
             <div class="glass-card">
-                <div class="special-quote">
-                    "God is within her, she will not fall" 💕
-                </div>
-                <div class="special-quote" style="font-size: 1.5rem;">
-                    Pray • Wait • Trust
+                <div class="volume-message">
+                    🔊 MY PRINCESS TURN VOLUME UP 🔊
                 </div>
             </div>
             
-            <!-- HER BIRTHDAY & SPECIAL DATE -->
+            <!-- HER VERSE -->
+            <div class="glass-card">
+                <h2 style="font-size: 2rem;">"God is within her, she will not fall"</h2>
+                <h2 style="font-size: 1.5rem;">Pray • Wait • Trust</h2>
+            </div>
+            
+            <!-- HER DETAILS -->
             <div class="glass-card">
                 <div class="fact-grid">
                     <div class="fact-card">
@@ -319,24 +290,27 @@
                     </div>
                     <div class="fact-card">
                         <h3>👁️ Her Eyes</h3>
-                        <p>Beautiful Green 💚</p>
+                        <p>Beautiful Green</p>
                     </div>
                     <div class="fact-card">
                         <h3>🎀 Favorite</h3>
                         <p>Hello Kitty</p>
                     </div>
+                    <div class="fact-card">
+                        <h3>🍽️ Food</h3>
+                        <p>Sundae Caramel • Thai</p>
+                    </div>
+                    <div class="fact-card">
+                        <h3>🗺️ Dream</h3>
+                        <p>Landes, France</p>
+                    </div>
                 </div>
             </div>
             
-            <!-- PINK ROSES FOR HER -->
+            <!-- PINK ROSES -->
             <div class="glass-card">
-                <h2>For You, My Princess 🌹</h2>
-                <div class="pink-rose">
-                    🌸 🌹 🌸 <br>
-                    Pink Roses for My Pink Moon<br>
-                    🌸 🌹 🌸
-                </div>
-                <p style="text-align: center;">Your favorite - pink roses, my love</p>
+                <h2>🌹 Pink Roses For You 🌹</h2>
+                <p style="font-size: 3rem; text-align: center;">🌸 🌹 🌸</p>
             </div>
             
             <!-- LOVE LETTER -->
@@ -362,41 +336,11 @@
                     <p>I'm a guy who doesn't cry at funerals. I said I wouldn't cry at our wedding, but I think when I hug you for the first time, I will. I really want to hug you and just melt into you, in your arms — just feel you and give you my love.</p>
                     <p>I need you, my love. I love you. You are the best gift God ever gave me.</p>
                 </div>
-                
-                <!-- Her phrases again -->
-                <div class="badge-container">
-                    <span class="badge">Olalalala Suleman</span>
-                    <span class="badge">You Crazy Sulemann</span>
-                    <span class="badge">I'm Grown Ass Women</span>
-                </div>
-            </div>
-
-            <!-- HER FAVORITE THINGS -->
-            <div class="glass-card">
-                <h2>💕 All About My Girl</h2>
-                <div class="fact-grid">
-                    <div class="fact-card">
-                        <h3>🍽️ Favorite Food</h3>
-                        <p>Sundae Caramel<br>Thai Food</p>
-                    </div>
-                    <div class="fact-card">
-                        <h3>🎀 Loves</h3>
-                        <p>Hello Kitty • Pink • Roses</p>
-                    </div>
-                    <div class="fact-card">
-                        <h3>🗺️ Dream Vacation</h3>
-                        <p>Landes, France 🇫🇷</p>
-                    </div>
-                    <div class="fact-card">
-                        <h3>👶 Future Kids</h3>
-                        <p>2 Kids (She says)<br>4 Kids (I say)</p>
-                    </div>
-                </div>
             </div>
 
             <!-- AUDIO -->
             <div class="glass-card">
-                <h2>🎵 For You, My Love</h2>
+                <h2>🎵 Listen With Volume Up 🎵</h2>
                 <div class="audio-container">
                     <div class="audio-card">
                         <h3>💕 My Voice Message</h3>
@@ -409,9 +353,9 @@
                 </div>
             </div>
 
-            <!-- MEMORIES -->
+            <!-- MEMORIES - NO CROPPING -->
             <div class="glass-card">
-                <h2>📸 Our Memories</h2>
+                <h2>📸 Our Memories (No Cropping)</h2>
                 <div class="thumbnail-grid" id="thumbnailGrid"></div>
             </div>
 
@@ -419,11 +363,6 @@
             <div class="glass-card">
                 <h2 style="font-size: 2.5rem;">Will You Stay In My World Forever?</h2>
                 <p style="font-size: 2rem;">My princess. My heart. My Suzon.</p>
-                <div class="badge-container">
-                    <span class="badge">Te amo</span>
-                    <span class="badge">Je t'aime</span>
-                    <span class="badge">I love you</span>
-                </div>
                 <button class="btn" onclick="celebrate()">Yes, My Love 💖</button>
             </div>
 
@@ -431,7 +370,7 @@
     </div>
 
     <script>
-        // SLIDESHOW
+        // SLIDESHOW - NO CROPPING
         for (let i = 1; i <= 16; i++) {
             const slide = document.createElement('div');
             slide.className = 'slide';
@@ -449,7 +388,7 @@
             slides[currentSlide].classList.add('active');
         }, 5000);
 
-        // TYPING - PERSONALIZED
+        // TYPING
         const text = "Welcome My Princess Suzon 👑";
         const typingElement = document.getElementById('typing');
         let i = 0;
@@ -472,7 +411,7 @@
             }, 1000);
         }
 
-        // THUMBNAILS
+        // THUMBNAILS - NO CROPPING
         for (let i = 1; i <= 16; i++) {
             const thumb = document.createElement('div');
             thumb.className = 'thumbnail';
@@ -491,9 +430,8 @@
             heart.className = 'floating-heart';
             heart.innerHTML = '💗';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (4 + Math.random() * 6) + 's';
             document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 10000);
+            setTimeout(() => heart.remove(), 8000);
         }, 300);
 
         function celebrate() {
